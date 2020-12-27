@@ -16,36 +16,40 @@ limitations under the License.
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
-
+	"github.com/abhi18av/twrgo/api"
+	"github.com/spf13/viper"
 	"github.com/spf13/cobra"
 )
 
-// platformsCmd represents the platforms command
-var platformsCmd = &cobra.Command{
-	Use:   "platforms",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+// serviceInfoCmd represents the serviceInfo command
+var serviceInfoCmd = &cobra.Command{
+	Use:   "serviceInfo",
+	Short: "Brief information for the Tower installation.",
+	Long: `This command can be used to obtain information about a Tower installation.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("platforms called")
+
+		TOWER_API_ENDPOINT := viper.GetString("TOWER_API_ENDPOINT")
+		res, err := json.MarshalIndent(api.ServiceInfo(TOWER_API_ENDPOINT),  "", "  ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println(string(res))
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(platformsCmd)
+	rootCmd.AddCommand(serviceInfoCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// platformsCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// serviceInfoCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// platformsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// serviceInfoCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
