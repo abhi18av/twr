@@ -6,6 +6,27 @@ NOTE: You need to execute `sudo spctl --master-disable` to allow the binary to b
 
 # USAGE
 
+```
+$ twr_0.0.9_darwin_amd64 eklavya$ ./twr
+The twr CLI can be configured to be used with a Nextflow Tower installation.
+By default, it is configured to be used with the public tower.nf instance.
+
+Usage:
+  twr [command]
+
+Available Commands:
+  help        Help about any command
+  serviceInfo Brief information for the Tower installation.
+
+Flags:
+      --config string   config file (default is $HOME/.twr.yaml)
+  -h, --help            help for twr
+
+Use "twr [command] --help" for more information about a command.
+
+```
+
+
 ## Config file
 
 Create a `.twr.yaml` file in your $HOME with the following content
