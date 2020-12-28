@@ -6,6 +6,17 @@ NOTE: You need to execute `sudo spctl --master-disable` to allow the binary to b
 
 # USAGE
 
+## Config file
+
+Create a `.twr.yaml` file in your $HOME with the following content
+
+```yaml
+TOWER_API_ENDPOINT:
+  https://api.tower.nf/
+```
+
+## Commands
+
 - `serviceInfo`
 
 This command can be used to obtain information about a Tower installation.
