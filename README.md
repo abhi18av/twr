@@ -1,11 +1,53 @@
-# CLI Design
+# Installation
 
+Simply download and unzip the release archive for your platform.
+
+NOTE: You need to execute `sudo spctl --master-disable` to allow the binary to be executed on modern macOS.
+
+# USAGE
 
 - `serviceInfo`
 
+This command can be used to obtain information about a Tower installation.
+
 ```
-twr serviceInfo
+$ twr_0.0.9_darwin_amd64 eklavya$ ./twr serviceInfo
+Using config file: /Users/eklavya/.twr.yaml
+{
+  "serviceInfo": {
+    "version": "20.12.1",
+    "commitId": "6b2b93a",
+    "authTypes": [
+      "github",
+      "google"
+    ],
+    "loginPath": "/login",
+    "navbar": {
+      "menus": [
+        {
+          "label": "Docs",
+          "url": "https://help.tower.nf"
+        },
+        {
+          "label": "Community",
+          "url": "https://gitter.im/nf-tower/community"
+        },
+        {
+          "label": "Feedback",
+          "url": "https://github.com/seqeralabs/nf-tower/issues"
+        },
+        {
+          "label": "Support",
+          "url": "https://seqera.io/"
+        }
+      ]
+    },
+    "heartbeatInterval": 3240
+  }
+}
 ```
+
+## TODO
 
 - `actions`
 - `computerEnvs`
